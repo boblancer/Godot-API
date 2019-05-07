@@ -1,0 +1,26 @@
+default: &default
+
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %> 
+  host: localhost
+  username: postgres
+  password: postgres
+
+development:
+  <<: *default
+  database: godot-api_development
+
+ 
+test:
+  <<: *default
+  database: godot-api_test
+
+#
+production:
+  <<: *default
+  database: godot-api_production
+  username: godot-api
+  password: <%= ENV['GODOT-API_DATABASE_PASSWORD'] %>
